@@ -30,6 +30,7 @@ In the edge-cloud environments, node conditions can change quickly and unpredict
 
 ### Scheduler-Plugins
 This project extends the Kubernetes scheduling pipeline with custom plugins designed for service placement in edge-cloud infrastructures. Instead of treating all nodes as equivalent, it introduces decision logic that accounts for degraded performance, runtime node metrics, service dependencies, and realtime constraints. The project is packaged to run as a dedicated secondary scheduler through Helm, making it practical to evaluate advanced policies without replacing the cluster's default scheduler behavior. It allows critical and latency-sensitive workloads to be placed with more context-aware criteria, particularly in smart-city and distributed computing environments.
+* https://github.com/nap-it/scheduler-plugins
 
 
 ### Multi-Cri
