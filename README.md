@@ -22,7 +22,7 @@ Includes the FogService CRD definition that allows the instantiation of FogServi
 
 ### Load Balancer
 Kubernetes creates the necessary Iptables network rules through the Kube-Proxy that runs on each cluster node in the appropriate chains and tables to ensure that the user's requests reach their correct destination. However, the default Kube-Proxy load-balancing algorithm ensures that each replica receives the same amount of network requests as the other ones. In edge road environments, such logic is inadequate because of the dynamic nature of the ecosystem, and factors such as user proximity to the replicas, user mobility, service, and network performance are ignored. To address this issue, this custom Load Balancer service desgined. This service runs in each node alongside the Kube-Proxy, and periodically iterates over the list of Service resources to overwrite the probabilities of each replica to receive a request, taking into account the service-specific metrics and the network latency reflected on the cluster.
-* https://github.com/nap-it/fog-operator
+* [https://github.com/nap-it/fog-operator](https://github.com/nap-it/load-balancer)
 
 ### Descheduler
 In the edge-cloud environments, node conditions can change quickly and unpredictably. Instead of relying only on static balancing policies, this component called the Descheduler introduces strategies that react to degraded nodes and to real scheduling pressure observed in the cluster.The project combines custom descheduling logic, including BetterNode and DegradedNode strategies, with a modified cluster-capacity simulation flow to estimate placement effects before large-scale changes.
@@ -36,3 +36,29 @@ This project extends the Kubernetes scheduling pipeline with custom plugins desi
 ### Multi-Cri
 Multi-cri acts as an integration layer between Kubernetes and runtime environments that do not fit a single standard backend model. It exposes a CRI-compatible interface to the kubelet while internally translating requests through adapter logic, allowing one control path to orchestrate different execution mechanisms. Beyond basic request forwarding, the project includes systemd-oriented container operations, automated image handling workflows, and support for realtime scheduling configuration when services require strict latency behavior.
 * https://github.com/nap-it/multi-cri
+
+## Citation
+
+Text format:
+```sh
+R. Rosmaninho, D. Raposo, P. Rito and S. Sargento, "Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach," in IEEE Transactions on Services Computing, vol. 18, no. 3, pp. 1381-1396, May-June 2025, doi: 10.1109/TSC.2025.3568251. keywords: {Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
+```
+BibText format:
+```
+@ARTICLE{10994362,
+  author={Rosmaninho, Rodrigo and Raposo, Duarte and Rito, Pedro and Sargento, Susana},
+  journal={IEEE Transactions on Services Computing}, 
+  title={Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach}, 
+  year={2025},
+  volume={18},
+  number={3},
+  pages={1381-1396},
+  keywords={Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
+  doi={10.1109/TSC.2025.3568251}}
+```
+
+## License
+
+Latency Monitor is under [LGPL v3](./LICENSE) and [GPL v3](./LICENSE) licenses.
+
+
