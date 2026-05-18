@@ -2,6 +2,27 @@
 ## Motivation
 Service deployment with Kubernetes can be a complex process with a steep learning curve, which becomes even more challenging in a heterogeneous and limited environment such as the edge. Moreover, the Kubernetes platform, despite its extensive community support and high popularity, is not prepared for the edge environment, as it is designed for the cloud computing ecosystem, which contains much more powerful hardware, and is not well suited for use in low-powered devices.
 
+## Citation
+
+If you find this code useful in your research, please consider citing:
+
+Text format:
+```sh
+R. Rosmaninho, D. Raposo, P. Rito and S. Sargento, "Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach," in IEEE Transactions on Services Computing, vol. 18, no. 3, pp. 1381-1396, May-June 2025, doi: 10.1109/TSC.2025.3568251. keywords: {Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
+```
+BibText format:
+```
+@ARTICLE{10994362,
+  author={Rosmaninho, Rodrigo and Raposo, Duarte and Rito, Pedro and Sargento, Susana},
+  journal={IEEE Transactions on Services Computing}, 
+  title={Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach}, 
+  year={2025},
+  volume={18},
+  number={3},
+  pages={1381-1396},
+  keywords={Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
+  doi={10.1109/TSC.2025.3568251}}
+```
 
 ## Orchestration Strategies for Time-Constrained Smart City Services
 To address this issue, a set of Kubernetes extensions was developed and tested to enable the deployment of services optimized for edge environments within the research group Network Architectures and Protocols (NAP). These extensions provide capabilities such as support for both legacy and real-time services, continuous service monitoring to identify suboptimal conditions, and an improved load-balancing system that considers service-specific metrics and edge-node latency to achieve faster response times.
@@ -36,26 +57,6 @@ This project extends the Kubernetes scheduling pipeline with custom plugins desi
 ### Multi-Cri
 Multi-cri acts as an integration layer between Kubernetes and runtime environments that do not fit a single standard backend model. It exposes a CRI-compatible interface to the kubelet while internally translating requests through adapter logic, allowing one control path to orchestrate different execution mechanisms. Beyond basic request forwarding, the project includes systemd-oriented container operations, automated image handling workflows, and support for realtime scheduling configuration when services require strict latency behavior.
 * https://github.com/nap-it/multi-cri
-
-## Citation
-
-Text format:
-```sh
-R. Rosmaninho, D. Raposo, P. Rito and S. Sargento, "Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach," in IEEE Transactions on Services Computing, vol. 18, no. 3, pp. 1381-1396, May-June 2025, doi: 10.1109/TSC.2025.3568251. keywords: {Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
-```
-BibText format:
-```
-@ARTICLE{10994362,
-  author={Rosmaninho, Rodrigo and Raposo, Duarte and Rito, Pedro and Sargento, Susana},
-  journal={IEEE Transactions on Services Computing}, 
-  title={Edge-Cloud Continuum Orchestration of Critical Services: A Smart-City Approach}, 
-  year={2025},
-  volume={18},
-  number={3},
-  pages={1381-1396},
-  keywords={Resource management;Real-time systems;Computer architecture;Monitoring;Training;Quality of service;Network topology;Load management;5G mobile communication;Topology;Edge computing;smart-city;real-time;Kubernetes;MEC;5G},
-  doi={10.1109/TSC.2025.3568251}}
-```
 
 ## License
 
