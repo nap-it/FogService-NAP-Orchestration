@@ -22,7 +22,7 @@ Includes the FogService CRD definition that allows the instantiation of FogServi
 
 ### Load Balancer
 Kubernetes creates the necessary Iptables network rules through the Kube-Proxy that runs on each cluster node in the appropriate chains and tables to ensure that the user's requests reach their correct destination. However, the default Kube-Proxy load-balancing algorithm ensures that each replica receives the same amount of network requests as the other ones. In edge road environments, such logic is inadequate because of the dynamic nature of the ecosystem, and factors such as user proximity to the replicas, user mobility, service, and network performance are ignored. To address this issue, this custom Load Balancer service desgined. This service runs in each node alongside the Kube-Proxy, and periodically iterates over the list of Service resources to overwrite the probabilities of each replica to receive a request, taking into account the service-specific metrics and the network latency reflected on the cluster.
-* [https://github.com/nap-it/fog-operator](https://github.com/nap-it/load-balancer)
+* https://github.com/nap-it/load-balancer
 
 ### Descheduler
 In the edge-cloud environments, node conditions can change quickly and unpredictably. Instead of relying only on static balancing policies, this component called the Descheduler introduces strategies that react to degraded nodes and to real scheduling pressure observed in the cluster.The project combines custom descheduling logic, including BetterNode and DegradedNode strategies, with a modified cluster-capacity simulation flow to estimate placement effects before large-scale changes.
